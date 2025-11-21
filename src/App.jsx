@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Github, Linkedin, Mail, Globe, ChevronDown,
   Database, Settings, Code, BarChart3, Cpu, Layers, Phone,
-  Award, FileText, Download, Brain, Layout, BookOpen, TrendingUp, X, ExternalLink
+  Award, FileText, Download, Brain, Layout, BookOpen, TrendingUp, X, ExternalLink, Box, PenTool
 } from 'lucide-react';
 import ProjectShowcase from './components/ProjectShowcase';
 import AnomalyDashboard from './components/AnomalyDashboard';
@@ -97,6 +97,7 @@ const translations = {
           title: "Store Performance Analytics",
           desc: "ETL pipeline and EDA to identify underperforming branches (anomalies) and optimize retail strategy.",
           longDescription: "A comprehensive data analysis solution designed to optimize retail performance. This project involved building a robust ETL pipeline to ingest sales data from multiple sources, cleaning and transforming it for analysis. Using advanced statistical methods, I identified key performance indicators and detected anomalies in store performance, leading to actionable insights for strategic decision-making.",
+          image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
           tags: ["Python", "Pandas", "Matplotlib", "ETL"],
           details: [
             "Processed over 1M+ transaction records",
@@ -108,6 +109,7 @@ const translations = {
           title: "Industrial Design & AI Media",
           desc: "Mechanical prototyping with Solid Edge/AutoCAD combined with AI-generated video content for industrial marketing.",
           longDescription: "Bridging the gap between traditional industrial design and modern digital marketing. This project showcases the integration of precise CAD modeling with cutting-edge generative AI tools to create compelling visual narratives for industrial products. The workflow demonstrates how engineering precision can meet creative storytelling.",
+          image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
           tags: ["Solid Edge", "AutoCAD", "GenAI", "Prototyping"],
           details: [
             "3D Modeling with Solid Edge",
@@ -119,6 +121,7 @@ const translations = {
           title: "Web Dev & Operations",
           desc: "From building the operational site for 'Entre Dos Copas' (HTML/JS) to assisting in React/Magento migrations for fashion retail.",
           longDescription: "A full-stack web development initiative focused on operational efficiency. Starting with a custom HTML/JS solution for 'Entre Dos Copas' to manage daily operations, this project evolved into supporting complex migrations for large-scale fashion retail platforms, ensuring seamless user experiences and robust backend performance.",
+          image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
           tags: ["React", "Tailwind", "JS", "Business Logic"],
           details: [
             "Custom Operational Dashboard",
@@ -154,6 +157,7 @@ const translations = {
           title: "Análisis de Rendimiento Comercial",
           desc: "Pipeline ETL y EDA para identificar sucursales con bajo rendimiento (anomalías) y optimizar la estrategia de ventas.",
           longDescription: "Una solución integral de análisis de datos diseñada para optimizar el rendimiento minorista. Este proyecto implicó la construcción de un pipeline ETL robusto para ingerir datos de ventas de múltiples fuentes, limpiarlos y transformarlos para su análisis. Utilizando métodos estadísticos avanzados, identifiqué indicadores clave de rendimiento y detecté anomalías en el rendimiento de las tiendas, lo que llevó a conocimientos prácticos para la toma de decisiones estratégicas.",
+          image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
           tags: ["Python", "Pandas", "Matplotlib", "ETL"],
           details: [
             "Procesamiento de más de 1M+ registros",
@@ -165,6 +169,7 @@ const translations = {
           title: "Diseño Industrial + AI Media",
           desc: "Prototipado mecánico con Solid Edge/AutoCAD combinado con generación de video con IA para marketing industrial.",
           longDescription: "Uniendo el diseño industrial tradicional con el marketing digital moderno. Este proyecto muestra la integración del modelado CAD preciso con herramientas de IA generativa de vanguardia para crear narrativas visuales convincentes para productos industriales. El flujo de trabajo demuestra cómo la precisión de la ingeniería puede encontrarse con la narración creativa.",
+          image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
           tags: ["Solid Edge", "AutoCAD", "GenAI", "Prototipado"],
           details: [
             "Modelado 3D con Solid Edge",
@@ -176,6 +181,7 @@ const translations = {
           title: "Desarrollo Web y Operaciones",
           desc: "Desde el sitio operativo para 'Entre Dos Copas' (HTML/JS) hasta migraciones complejas en React/Magento.",
           longDescription: "Una iniciativa de desarrollo web full-stack centrada en la eficiencia operativa. Comenzando con una solución HTML/JS personalizada para 'Entre Dos Copas' para gestionar las operaciones diarias, este proyecto evolucionó para apoyar migraciones complejas para plataformas minoristas de moda a gran escala, asegurando experiencias de usuario fluidas y un rendimiento backend robusto.",
+          image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
           tags: ["React", "Tailwind", "JS", "Lógica de Negocio"],
           details: [
             "Dashboard Operativo Personalizado",
@@ -213,18 +219,39 @@ const itemVariants = {
 
 // --- UI COMPONENTS ---
 function TechMarquee() {
-  const skills = [
-    "Python", "Pandas", "SQL", "Solid Edge", "AutoCAD",
-    "React", "Tailwind", "Data Science", "ETL", "IoT", "Scikit-Learn"
+  // Definition of the tech stack with logos and icons
+  const techStack = [
+    { name: "Python", type: "img", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+    { name: "Pandas", type: "img", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
+    { name: "React", type: "img", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+    { name: "Tailwind", type: "img", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+    { name: "SQL", type: "icon", icon: Database, color: "text-blue-400" }, // SQL usually generic or Azure
+    { name: "Solid Edge", type: "icon", icon: Box, color: "text-red-500" }, // Engineering Tool
+    { name: "AutoCAD", type: "icon", icon: PenTool, color: "text-red-600" }, // Engineering Tool
+    { name: "Data Science", type: "icon", icon: BarChart3, color: "text-purple-400" },
+    { name: "IoT", type: "icon", icon: Cpu, color: "text-sky-400" },
+    { name: "Git", type: "img", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" }
   ];
 
   return (
     <div className="w-full bg-gray-950 py-10 overflow-hidden border-t border-b border-gray-800 relative z-20">
       <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-transparent to-gray-950 z-10 pointer-events-none"></div>
-      <div className="flex w-max animate-infinite-scroll gap-12">
-        {[...skills, ...skills].map((skill, index) => (
-          <div key={index} className="flex items-center gap-2 text-gray-500 font-bold text-lg font-bold uppercase tracking-wider whitespace-nowrap hover:text-sky-400 transition-colors cursor-default">
-            <span className="text-sky-500/50">#</span> {skill}
+      <div className="flex w-max animate-infinite-scroll gap-16 group">
+        {[...techStack, ...techStack].map((tech, index) => (
+          <div key={index} className="flex items-center gap-3 cursor-default transition-all duration-300 hover:scale-110">
+
+            {/* Icon / Logo Logic */}
+            <div className="w-8 h-8 flex items-center justify-center filter grayscale group-hover:grayscale-0 transition-all duration-500">
+              {tech.type === 'img' ? (
+                <img src={tech.src} alt={tech.name} className="w-full h-full object-contain" />
+              ) : (
+                <tech.icon size={28} className={`${tech.color}`} />
+              )}
+            </div>
+            {/* Text */}
+            <span className="text-slate-500 font-mono text-sm font-bold uppercase tracking-wider whitespace-nowrap group-hover:text-slate-200 transition-colors">
+              {tech.name}
+            </span>
           </div>
         ))}
       </div>
@@ -706,25 +733,39 @@ export default function App() {
               key={i}
               variants={itemVariants}
               onClick={() => setSelectedProject(project)}
-              className="group bg-gray-950 rounded-xl overflow-hidden border border-gray-700 hover:border-sky-500/50 transition-all shadow-lg hover:shadow-sky-500/10 flex flex-col cursor-pointer hover:-translate-y-2"
+              className="group bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-sky-500/50 transition-all shadow-lg hover:shadow-sky-500/20 flex flex-col h-full cursor-pointer"
             >
-              <div className="h-48 bg-gray-800 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent opacity-80" />
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="text-sky-400 font-mono text-xs mb-2 flex items-center gap-2">
-                    <Code size={12} /> PROJECT {i + 1}
+              {/* Image Container */}
+              <div className="h-48 overflow-hidden relative">
+                <div className="absolute inset-0 bg-slate-900/20 z-10 group-hover:bg-transparent transition-colors"></div>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                />
+                {/* Overlay Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-90"></div>
+                {/* Badge */}
+                <div className="absolute bottom-4 left-4 z-20">
+                  <div className="text-sky-400 font-mono text-xs mb-1 flex items-center gap-2">
+                    <Code size={12} /> PROJECT 0{i + 1}
                   </div>
-                  <div className="font-bold text-xl text-gray-100 group-hover:text-sky-400 transition-colors">{project.title}</div>
+                  <h3 className="font-bold text-xl text-slate-100 leading-tight group-hover:text-sky-300 transition-colors">
+                    {project.title}
+                  </h3>
                 </div>
               </div>
-              <div className="p-6 flex flex-col flex-grow justify-between">
-                <p className="text-gray-400 text-sm mb-6 leading-relaxed line-clamp-3">
+              {/* Content */}
+              <div className="p-6 flex flex-col flex-grow justify-between bg-slate-900">
+                <p className="text-slate-400 text-sm mb-6 leading-relaxed">
                   {project.desc}
                 </p>
-                <div className="flex gap-2 text-xs font-mono text-sky-400/80 flex-wrap">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="bg-sky-900/20 px-2 py-1 rounded border border-sky-500/10">
+                <div className="flex gap-2 text-xs font-mono text-sky-500/80 flex-wrap">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="bg-sky-950/30 px-2 py-1 rounded border border-sky-800/30 group-hover:border-sky-500/30 transition-colors"
+                    >
                       {tag}
                     </span>
                   ))}
