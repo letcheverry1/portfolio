@@ -396,7 +396,7 @@ export default function App() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="relative w-full"
+              className="relative w-full max-w-[340px] md:max-w-full mx-auto overflow-hidden rounded-xl"
             >
               <div className="absolute -inset-1 border border-blue-500/20 rounded-xl z-0"></div>
               <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-blue-400 rounded-tl-lg z-20"></div>
@@ -427,7 +427,7 @@ export default function App() {
               <h4 className="text-base md:text-lg text-blue-400/80 mb-4 font-mono tracking-wide">
                 {t.engineering.subtitle}
               </h4>
-              <p className="text-slate-400 leading-relaxed mb-6 text-sm md:text-base pr-6 md:pr-0 text-pretty">
+              <p className="text-slate-400 leading-relaxed mb-6 text-sm md:text-base w-full max-w-[340px] md:max-w-none break-words">
                 {t.engineering.desc}
               </p>
 
